@@ -1,0 +1,9 @@
+development:
+  client_id: 779741386900.apps.googleusercontent.com
+  client_secret: 3lAa31-KAcizprNGHm41shUd
+test:
+  client_id: 779741386900.apps.googleusercontent.com
+  client_secret: 3lAa31-KAcizprNGHm41shUd
+production:
+  client_id: 895123852293.apps.googleusercontent.com
+  client_secret: P5rHvbyb90uNHygNvu1LOnAR
