@@ -1,0 +1,4 @@
+<%= form_tag(calendar_upload_url, :multipart => true, :html => {:id => "calendar_form"}) do %>
+  <%= file_field_tag "file" %>
+  <%= submit_tag %>
+<% end %>

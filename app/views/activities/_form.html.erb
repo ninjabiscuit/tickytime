@@ -1,0 +1,26 @@
+<%= form_for(@activity) do |f| %>
+  <ul class="fields">
+    <li class="field text">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </li>
+    <li class="field time">
+      <%= f.label :start_at %>
+      <%= f.text_field :start_at %>
+    </li>
+    <li class="field time">
+      <%= f.label :end_at %>
+      <%= f.text_field :end_at %>
+    </li>
+    <li class="field text">
+      <%= f.label :notes %>
+      <%= f.text_area :notes %>
+    </li>
+    <li class="field boolean">
+      <%= f.check_box :is_completed %>
+      <%= f.label :is_completed %>
+    </li>
+  </ul>
+
+  <%= f.submit %>
+<% end -%>

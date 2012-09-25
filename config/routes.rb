@@ -6,6 +6,11 @@ Tickytime::Application.routes.draw do
   match '/auth/failure' => 'sessions#failure'
   match "/signout" => "sessions#destroy", :as => :signout
 
+  match '/calendar' => 'calendar#index', :via => :get
+  match '/calendar/upload' => 'calendar#upload', :via => :post
+
+  resources :activities
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

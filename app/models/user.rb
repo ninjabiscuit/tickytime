@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :provider, :uid
+  attr_accessible :first_name, :last_name, :provider, :uid, :token
 
-  validates_presence_of :first_name, :last_name, :uid
+  validates_presence_of :uid, :token
   validates_uniqueness_of :uid
 
   def full_name

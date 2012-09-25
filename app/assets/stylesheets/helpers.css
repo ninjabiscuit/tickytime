@@ -1,0 +1,121 @@
+/* ==|== non-semantic helper classes ======================================== */
+/* ===== un-comment the ones you use ======================================== */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers */
+.hidden { display: none; }
+
+/* Hide only visually, but have it available for screenreaders */
+.visuallyhidden, .js .unobtrusive { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus, .skip-links a:active, .skip-links a:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* == Contain floats == */
+/*.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+*/
+
+/* == Media boxes == (Thnx @Stubbornella) */
+.media, .bd {overflow:hidden; _overflow:visible; zoom:1;}
+.media .img {float:left; margin-right: 10px;}
+.media .img img{display:block;}
+.media .imgExt{float:right; margin-left: 10px;}
+
+/* == unstyled list == */
+
+nav ul, .unstyled-list, .in-list, .fl-list, .suckerfish, .suckerfish ul, .centered-list { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
+/* == centered list == */
+
+.centered-list {
+  text-align:center;
+}
+
+.centered-list li {
+  vertical-align:top;
+}
+
+/* == inline list == */
+.in-list li, .centered-list li {
+  display:inline-block;
+}
+
+/* == float list == */
+.fl-list li {
+  float:left;
+}
+
+/* == floats == */
+.left {
+  float:left;
+}
+
+.right {
+  float:right;
+}
+
+.clear {
+  clear:both;
+}
+
+
+/* Site specific */
+
+.clearfix {
+  overflow: hidden;
+}
+
+.centred {
+  text-align: center !important;
+}
+
+.border {
+  position: relative;
+}
+
+.border:after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  left: 10px;
+  margin-top: 28px;
+  border-bottom: 1px solid #ddd;
+}
+
+.box {
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+
+/* Base flash message styles */
+
+.flash {
+  position: fixed;
+  top:30px;
+  z-index:100;
+  width: 100%;
+  text-align: center;
+}
+
+.flash p {
+  display:inline-block;
+  padding: 0 10px;
+  background: #EDE4A0;
+  border: 2px solid #C1BB74;
+  color:#565428;
+  margin:0;
+}
