@@ -10,6 +10,7 @@ gem 'inherited_resources'
 gem 'heroku'
 gem "friendly_id", "~> 4.0.1"
 
+gem 'google-api-client', :require => 'google/api_client'
 gem "omniauth"
 gem "omniauth-google-oauth2"
 

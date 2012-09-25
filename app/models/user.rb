@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
       user.uid = auth["uid"]
       user.first_name = auth["info"]["first_name"]
       user.last_name = auth["info"]["last_name"]
+      user.token = auth["credentials"]["token"]
     end
   end
 
