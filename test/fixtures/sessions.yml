@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  starts_at: MyString
+  ends_at: MyString
+  course_module_id: 1
+  title: MyString
+  type: 
+  groups: MyString
+  room: MyString
+
+two:
+  starts_at: MyString
+  ends_at: MyString
+  course_module_id: 1
+  title: MyString
+  type: 
+  groups: MyString
+  room: MyString

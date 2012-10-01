@@ -1,5 +1,11 @@
 Tickytime::Application.routes.draw do
 
+  get "course_modules/index"
+
+  get "course_modules/new"
+
+  get "course_modules/edit"
+
   root :to => "pages#index"
 
   match "/auth/:provider/callback" => "sessions#create"
@@ -10,6 +16,7 @@ Tickytime::Application.routes.draw do
   match '/calendar/upload' => 'calendar#upload', :via => :post
 
   resources :activities
+  resources :lessons
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

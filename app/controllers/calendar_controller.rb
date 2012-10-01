@@ -5,21 +5,22 @@ class CalendarController < ApplicationController
   require 'csv'
 
   def upload
+
     if request.post? && params[:file].present?
       
       csv_text = params[:file].read
       csv_text = csv_text.gsub("\"", "")
 
-      puts csv_text
-
       csv = CSV.parse(csv_text, :headers => true)
-      csv.each_with_index do |row, i|
-      
-        # SKIP: header i.e. first row OR blank row
-        next if i == 0
+
+      csv.each do |row|
 
         row = row.to_hash.with_indifferent_access
-        puts row.to_hash.symbolize_keys
+
+        code = CourseModule.find_or_initialize_by_code(row["Code"])
+        code.save
+
+        Lesson.build_from_csv(row.merge({:Code => code.id}))
 
       end  
     end
