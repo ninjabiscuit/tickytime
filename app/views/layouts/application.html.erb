@@ -37,13 +37,15 @@
           <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
         <% end %>
       </nav>
-      <nav class="main-nav right">
-        <ul class="in-list">
-          <li><%= link_to "Calendar upload", calendar_path %></li>
-          <li><%= link_to "Lessons", lessons_path %></li>
-          <li><%= link_to "Activities", activities_path %></li>
-        </ul>
-      </nav>
+      <% if current_user %>
+        <nav class="main-nav right">
+          <ul class="in-list">
+            <li><%= link_to "Calendar upload", calendar_path %></li>
+            <li><%= link_to "Lessons", lessons_path %></li>
+            <li><%= link_to "Activities", activities_path %></li>
+          </ul>
+        </nav>
+      <% end -%>
     </header>
 
     <%= yield %>

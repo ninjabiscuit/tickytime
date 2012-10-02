@@ -7,7 +7,7 @@ class CalendarController < ApplicationController
   def upload
 
     if request.post? && params[:file].present?
-      
+
       csv_text = params[:file].read
       csv_text = csv_text.gsub("\"", "")
 
@@ -22,7 +22,10 @@ class CalendarController < ApplicationController
 
         Lesson.build_from_csv(row.merge({:Code => code.id}))
 
-      end  
+      end
+
+      redirect_to lessons_path
+
     end
   end
 

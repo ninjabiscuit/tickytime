@@ -1,8 +1,8 @@
 <article>
 
   <%= lesson.title %>
-  <%= lesson.start_at %>
-  <%= lesson.end_at %>
-  <%= lesson.duration %>
+  <%= time_tag lesson.start_at, lesson.start_at.strftime("%H:%M") %> -
+  <%= time_tag lesson.end_at, lesson.end_at.strftime("%H:%M") %>
+  (<%= lesson.duration %>)
 
 </article>

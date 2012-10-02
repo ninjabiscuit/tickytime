@@ -1,1 +1,9 @@
-<%= render @lessons %>
+<% @lessons.each do |day, lessons| %>
+
+  <%= time_tag lessons.first.start_at, lessons.first.start_at.strftime("%d %b") %>
+  <% lessons.each do |lesson| %>
+    <%= render lesson %>
+  <% end -%>
+
+<% end -%>
+

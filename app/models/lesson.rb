@@ -26,6 +26,10 @@ class Lesson < ActiveRecord::Base
 
   end
 
+  def self.by_day
+    all.group_by { |l| l.start_at.to_date.to_s(:db) }
+  end
+
   def duration
     Time.at(end_at - start_at).utc.strftime("%H:%M")
   end
