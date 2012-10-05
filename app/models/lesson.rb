@@ -41,7 +41,7 @@ class Lesson < ActiveRecord::Base
   end
 
   def self.current_month
-    where(["start_at >= ?", Time.now])
+    where("start_at >= ? AND start_at <= ?", Time.now, (Time.now + 1.month))
   end
 
   def duration
