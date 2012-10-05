@@ -44,6 +44,13 @@ class Lesson < ActiveRecord::Base
     where("start_at >= ? AND start_at <= ?", Time.now, (Time.now + 1.month))
   end
 
+  def calculate_break(lessons)
+    unless lessons.nil?
+      index = lessons.find_index(self)
+      (self.start_at - lessons[index-1].end_at) if index > 0
+    end
+  end
+
   def duration
     Time.at(end_at - start_at).utc.strftime("%k:%M")
   end
