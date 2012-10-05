@@ -1,14 +1,14 @@
 <div class="content-area clear">
-  <% @lessons.each do |day, lessons| %>
-    <div class="lesson-by-day">
-      <h2>
-        <%= time_tag lessons.first.start_at, "#{lessons.first.start_at.strftime("%a %d %b")} #{format_hour(lessons.first.start_at)} - #{format_hour(lessons.last.end_at)}", :class => "lesson-day-time" %>
-        <%=  %>
-      </h2>
-      <% lessons.each_with_index do |lesson, index| %>
-        <%= render_break(lesson, lessons) %>
-        <%= render lesson %>
-      <% end -%>
-    </div>
+
+  <% if @lessons %>
+
+    <h1>Lessons</h1>
+    <%= render "lessons" %>
+
+  <% else %>
+
+    <h1>Upload your lesson plan to get started</h1>
+    <%= render "calendar/form" %>
+
   <% end -%>
 </div>

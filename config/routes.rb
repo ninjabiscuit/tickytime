@@ -6,7 +6,7 @@ Tickytime::Application.routes.draw do
 
   get "course_modules/edit"
 
-  root :to => "pages#index"
+  root :to => "lessons#index"
 
   match "/auth/:provider/callback" => "sessions#create"
   match '/auth/failure' => 'sessions#failure'

@@ -1,0 +1,11 @@
+<% @lessons.each do |day, lessons| %>
+  <div class="lesson-by-day">
+    <h2>
+      <%= time_tag lessons.first.start_at, lesson_daytime_summary(lessons), :class => "lesson-day-time" %>
+    </h2>
+    <% lessons.each_with_index do |lesson, index| %>
+      <%= render_break(lesson, lessons) %>
+      <%= render lesson %>
+    <% end -%>
+  </div>
+<% end -%>

@@ -28,7 +28,7 @@
     <%= content_tag(:section, content_tag(:p, notice), :class => "flash notice") if notice %>
     <%= content_tag(:section, content_tag(:p, alert), :class => "flash alert") if alert %>
 
-    <header>
+    <header class="site-header">
       <nav class="user-nav left">
         <% if current_user %>
           <%= "Welcome, #{current_user.first_name}!" if current_user.first_name %>
@@ -41,8 +41,8 @@
         <nav class="main-nav right">
           <ul class="in-list">
             <li><%= link_to "Calendar upload", calendar_path %></li>
-            <li><%= link_to "Lessons", lessons_path %></li>
-            <li><%= link_to "Activities", activities_path %></li>
+            <!-- <li><%= link_to "Lessons", lessons_path %></li> -->
+            <!-- <li><%= link_to "Activities", activities_path %></li> -->
           </ul>
         </nav>
       <% end -%>
