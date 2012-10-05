@@ -1,8 +1,11 @@
-<article>
+<article class="lesson">
 
-  <%= lesson.title %>
-  <%= time_tag lesson.start_at, lesson.start_at.strftime("%H:%M") %> -
-  <%= time_tag lesson.end_at, lesson.end_at.strftime("%H:%M") %>
-  (<%= lesson.duration %>)
-
+  <div class="media">
+    <div class="img">
+      <%= time_tag lesson.start_at, format_hour(lesson.start_at) %> -
+      <%= time_tag lesson.end_at, format_hour(lesson.end_at) %>
+      (<%= lesson.duration %>)
+    </div>
+    <h3 class="lesson-title bd"><%= lesson.title %></h3>
+  </div>
 </article>

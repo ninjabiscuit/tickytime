@@ -5,6 +5,8 @@ class Lesson < ActiveRecord::Base
 
   def self.build_from_csv(row)
 
+    puts row.inspect
+
     # find existing lesson from email or create new
     lesson = find_or_initialize_by_start_at("#{row["Date"]} #{row["Start"]}")
     lesson.attributes ={
@@ -30,8 +32,20 @@ class Lesson < ActiveRecord::Base
     all.group_by { |l| l.start_at.to_date.to_s(:db) }
   end
 
+  def self.all_from_now
+    where(["start_at >= ?", Time.now])
+  end
+
+  def self.current_week
+    where("start_at >= ? AND start_at <= ?", Time.now, (Time.now + 1.week))
+  end
+
+  def self.current_month
+    where(["start_at >= ?", Time.now])
+  end
+
   def duration
-    Time.at(end_at - start_at).utc.strftime("%H:%M")
+    Time.at(end_at - start_at).utc.strftime("%k:%M")
   end
 
 end

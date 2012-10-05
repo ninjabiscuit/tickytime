@@ -9,9 +9,15 @@ class CalendarController < ApplicationController
     if request.post? && params[:file].present?
 
       csv_text = params[:file].read
+
+      # have to do some dirty gsubbing here to make the file parse
+      # replace commas with double pipe
+      csv_text = csv_text.gsub("\",\"", "||")
+
+      # remove quotes
       csv_text = csv_text.gsub("\"", "")
 
-      csv = CSV.parse(csv_text, :headers => true)
+      csv = CSV.parse(csv_text, :headers => true, :col_sep => "||")
 
       csv.each do |row|
 
