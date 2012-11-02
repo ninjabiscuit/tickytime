@@ -1,0 +1,9 @@
+<article class="lesson">
+  <% if course_module.title.present? %>
+    <%= content_tag :h3, course_module.title, :class => "lesson-title" %>
+    <span class="course-module"><%= course_module.code %></span>
+  <% else -%>
+    <%= content_tag :h3, course_module.code, :class => "lesson-title" %>
+  <% end -%>
+  <%= link_to "Edit", edit_course_module_path(course_module.id) %>
+</article>

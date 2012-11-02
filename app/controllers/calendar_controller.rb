@@ -26,13 +26,54 @@ class CalendarController < ApplicationController
         code = CourseModule.find_or_initialize_by_code(row["Code"])
         code.save
 
-        Lesson.build_from_csv(row.merge({:Code => code.id}))
+        Lesson.build_from_csv(row.merge({:Code => code.id, :User_id => current_user.id}))
 
       end
 
       redirect_to lessons_path
 
     end
+  end
+
+  def google_upload
+
+    client = Google::APIClient.new
+    client.authorization.client_id = current_user.token
+
+    client.authorization.scope = 'https://www.googleapis.com/auth/calendar'
+    client.authorization.access_token = current_user.token;
+
+    service = client.discovered_api('calendar', 'v3')
+    result = client.execute(:api_method => service.calendar_list.list)
+
+    result.data.items.each do |calendar|
+      if calendar.summary == "tickytime"
+        @calendar = calendar
+      end
+    end
+
+    puts @calendar
+
+    if !@calendar.present?
+      @calendar = client.execute(
+        :api_method => service.calendars.insert,
+        :body => JSON.dump({
+            summary: "tickytime",
+            timezone: "Europe/London"
+        }),
+        :headers => {'Content-Type' => 'application/json'}
+      )
+    end
+
+  end
+
+  def insert_event(calendar_id = 'primary', event_hash)
+    convert_event_hash_timestamps!(event_hash)
+    event = execute(:api_method => service.events.insert,
+                    :parameters => {'calendarId' => calendar_id},
+                    :body => [JSON.dump(event_hash)],
+                    :headers => {'Content-Type' => 'application/json'})
+    event ? event.data : nil
   end
 
 end

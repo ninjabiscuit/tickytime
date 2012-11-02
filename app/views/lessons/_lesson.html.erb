@@ -1,8 +1,5 @@
-<article class="lesson media">
-  <div class="img">
-    <%= time_tag lesson.start_at, format_hour(lesson.start_at) %> -
-    <%= time_tag lesson.end_at, format_hour(lesson.end_at) %>
-    (<%= lesson.duration %>)
-  </div>
-  <h3 class="lesson-title bd"><%= lesson.title %></h3>
+<article class="lesson">
+  <%= time_tag lesson.start_at, lesson_start_end(lesson), :class => "lesson-time-info" %>
+  <h3 class="lesson-title"><%= lesson.title %></h3>
+  <span class="course-module"><%= lesson.course_module.title.present? ? lesson.course_module.title : lesson.course_module.code %></span>
 </article>

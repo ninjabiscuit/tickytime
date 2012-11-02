@@ -14,9 +14,11 @@ Tickytime::Application.routes.draw do
 
   match '/calendar' => 'calendar#index', :via => :get
   match '/calendar/upload' => 'calendar#upload', :via => :post
+  match '/calendar/google_upload' => 'calendar#google_upload'
 
   resources :activities
   resources :lessons
+  resources :course_modules, :path => "modules"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

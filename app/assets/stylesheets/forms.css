@@ -64,6 +64,11 @@ input:invalid, textarea:invalid { background-color: #f0dddd; }
 
 /* ===== Default Form Styles ===== */
 
+label {
+  margin-bottom:10px;
+  display:inline-block;
+}
+
 input, textarea {
 -webkit-background-clip: padding-box; /* fix WebKit background bleed on border-radius */
 -webkit-border-radius: 5px;
@@ -72,17 +77,18 @@ input, textarea {
 }
 
 input[type="email"], input[type="password"], input[type="text"], textarea {
-  padding:20px;
+  padding:5px 15px;
   width:100%;
   border:1px solid #ccc;
 }
 
 input[type="submit"] {
-  padding: 0 20px;
+  padding: 0 15px;
   background-color: #03bc5a;
   border: 1px solid #008a41;
   font-size: 15px;
   line-height: 2.5em;
   font-weight: 700;
   color: #fff;
+  margin-top:15px;
 }

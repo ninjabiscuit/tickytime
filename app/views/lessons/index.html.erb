@@ -1,14 +1,32 @@
-<div class="content-area clear">
+<% if @lessons.present? && @lessons.any? %>
 
-  <% if @lessons %>
+  <%= page_title("Lessons") %>
 
-    <h1>Lessons</h1>
-    <%= render "lessons" %>
+  <%= form_tag(lessons_url, :id => "lessons_timeframe_form", :class => "lessons-timeframe-form", :method => "get") do %>
+    <ul class="in-list right">
+      <li>
+        <%= radio_button_tag "timeframe", "week", params[:timeframe] != "month" && params[:timeframe] != "all" %>
+        <%= label_tag "timeframe_week", "Week" %>
+      </li>
+      <li>
+        <%= radio_button_tag "timeframe", "month", params[:timeframe] == "month" %>
+        <%= label_tag "timeframe_month", "Month" %>
+      </li>
+      <li>
+        <%= radio_button_tag "timeframe", "all", params[:timeframe] == "all" %>
+        <%= label_tag "timeframe_all", "All" %>
+      </li>
+    </ul>
 
-  <% else %>
-
-    <h1>Upload your lesson plan to get started</h1>
-    <%= render "calendar/form" %>
-
+    <%= submit_tag "change timeframe", :class => "timeframe-submit-btn" %>
   <% end -%>
-</div>
+
+  <%= render "lessons" %>
+
+<% elsif current_user.present? %>
+
+  <h1>Upload your lesson plan to get started</h1>
+  <%= render "calendar/form" %>
+<% else -%>
+  <h1><%= link_to "Sign in  with your google account to get started", "/auth/google_oauth2" %></h1>
+<% end -%>

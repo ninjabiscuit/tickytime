@@ -1,6 +1,12 @@
 .lesson {
   background:#dedede;
-  padding:0 5px;
+  padding:7px 5px 5px;
+  border-bottom:1px solid #999;
+  position:relative;
+}
+
+.lesson:first-child {
+  border-top:1px solid #999;
 }
 
 .lesson-by-day {
@@ -10,6 +16,7 @@
 .lesson-title {
   font-weight:600;
   font-size:1em;
+  margin-top:5px;
 }
 
 .lesson-break {
@@ -17,4 +24,61 @@
   padding:5px;
   margin:5px 0;
   text-align:center;
+  box-shadow:inset 0 1px 5px rgba(0,0,0,0.25),0 1px 0 #fff;
+}
+
+.lesson-break + .lesson {
+  border-top:1px solid #999;
+}
+
+.lessons-timeframe-form {
+  position:absolute;
+  top:4px;
+  right:0;
+}
+
+.js .timeframe-submit-btn, .lessons-timeframe-form input[type="radio"] {
+  visibility:hidden;
+  position:absolute;
+  width:0;
+  height:0;
+}
+
+.lessons-timeframe-form label {
+  border:1px solid #999;
+  border-right:0;
+  background:#dedede;
+  padding:0 10px;
+  line-height:30px;
+  display:inline-block;
+  font-size:15px;
+}
+
+.lessons-timeframe-form li:first-child label {
+  border-radius: 0 4px 4px 0;
+  border-right:1px solid #999;
+
+}
+
+.lessons-timeframe-form li:last-child label {
+  border-radius: 4px 0 0 4px;
+}
+
+.lessons-timeframe-form li {
+  float:right;
+}
+
+.lessons-timeframe-form input[type="radio"]:checked ~ label, label:active {
+  background:#C4C4C4;
+  box-shadow:inset 0 1px 5px rgba(0,0,0,0.25),0 1px 0 #fff;
+}
+
+.lesson-time-info span {
+  float:right;
+}
+
+.lesson .course-module {
+  position:absolute;
+  bottom:9px;
+  right:5px;
 }

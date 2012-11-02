@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   validates_presence_of :uid, :token
   validates_uniqueness_of :uid
 
+  has_many :lessons
+  has_one :calendar
+
   def full_name
     "#{first_name} #{last_name}"
   end

@@ -17,6 +17,7 @@ h4, .h4-subhead, h5, .h5-subhead, h6, .h6-subhead {
 h1, .h-headline {
   font-size: 36px;
   letter-spacing: -1px;
+  margin-bottom:30px;
 }
 
 h2, .h2-subhead {
@@ -41,4 +42,22 @@ p, ul, ol {
   line-height: 1.6;
   font-weight: 400;
   color: #555;
+}
+
+@media all and (max-width: 400px) {
+  h1, .h-headline {
+    font-size: 30px;
+    letter-spacing: -1px;
+  }
+
+  h2, .h2-subhead {
+    margin-bottom: .5em;
+    font-size: 22px;
+  }
+
+  h3, .h3-subhead {
+  margin-bottom: .3em;
+  font-size: 24px;
+  line-height: 1.4;
+}
 }
