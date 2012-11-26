@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007143611) do
+ActiveRecord::Schema.define(:version => 20121113122852) do
 
   create_table "activities", :force => true do |t|
     t.datetime "start_at"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(:version => 20121007143611) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  create_table "calendars", :force => true do |t|
+    t.string   "google_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "kind"
+    t.string   "etag"
+    t.string   "summary"
+  end
+
+  add_index "calendars", ["user_id"], :name => "user_id_ix"
 
   create_table "course_modules", :force => true do |t|
     t.string   "title"

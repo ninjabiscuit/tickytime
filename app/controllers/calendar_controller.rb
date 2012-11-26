@@ -4,6 +4,11 @@ class CalendarController < ApplicationController
 
   require 'csv'
 
+  def create(client, service)
+
+    return calendar
+  end
+
   def upload
 
     if request.post? && params[:file].present?
@@ -38,32 +43,55 @@ class CalendarController < ApplicationController
   def google_upload
 
     client = Google::APIClient.new
-    client.authorization.client_id = current_user.token
-
     client.authorization.scope = 'https://www.googleapis.com/auth/calendar'
     client.authorization.access_token = current_user.token;
 
     service = client.discovered_api('calendar', 'v3')
-    result = client.execute(:api_method => service.calendar_list.list)
 
-    result.data.items.each do |calendar|
-      if calendar.summary == "tickytime"
-        @calendar = calendar
-      end
-    end
-
-    puts @calendar
-
-    if !@calendar.present?
-      @calendar = client.execute(
+    if current_user.calendar.present?
+      puts current_user.calendar.inspect
+    else
+      response = client.execute(
         :api_method => service.calendars.insert,
         :body => JSON.dump({
             summary: "tickytime",
             timezone: "Europe/London"
         }),
         :headers => {'Content-Type' => 'application/json'}
-      )
+      ).data.to_hash
+
+      response["google_id"] = response.delete("id")
+
+      calendar = current_user.build_calendar(response)
+      calendar.save
     end
+
+    # c
+
+    # client.authorization.scope = 'https://www.googleapis.com/auth/calendar'
+    # client.authorization.access_token = current_user.token;
+
+    # service = client.discovered_api('calendar', 'v3')
+    # result = client.execute(:api_method => service.calendar_list.list)
+
+    # result.data.items.each do |calendar|
+    #   if calendar.summary == "tickytime"
+    #     @calendar = calendar
+    #   end
+    # end
+
+    # puts @calendar
+
+    # if !@calendar.present?
+    #   @calendar = client.execute(
+    #     :api_method => service.calendars.insert,
+    #     :body => JSON.dump({
+    #         summary: "tickytime",
+    #         timezone: "Europe/London"
+    #     }),
+    #     :headers => {'Content-Type' => 'application/json'}
+    #   )
+    # end
 
   end
 
